@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -59,7 +60,8 @@
 
         .form-container {
             background-color: rgba(0, 0, 0, 0.7);
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
@@ -113,6 +115,11 @@
             transform: translateY(-2px);
         }
 
+        input[aria-invalid="true"] {
+            background-color: #ff4c4c;
+            color: #fff;
+        }
+
         button {
             background-color: #6e45e2;
             color: #ffffff;
@@ -147,6 +154,20 @@
         .form-footer a:hover {
             color: #ffffff;
             text-decoration: underline;
+        }
+
+        .tooltip {
+            font-size: 12px;
+            color: #ffffff;
+            background-color: #333;
+            padding: 5px;
+            border-radius: 4px;
+            display: none;
+            position: absolute;
+        }
+
+        input:focus + .tooltip {
+            display: block;
         }
 
         .success-message {
@@ -190,21 +211,26 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
         }
 
         @keyframes shake {
-            0%, 100% {
+            0%,
+            100% {
                 transform: translateX(0);
             }
+
             25% {
                 transform: translateX(-5px);
             }
+
             50% {
                 transform: translateX(5px);
             }
+
             75% {
                 transform: translateX(-5px);
             }
@@ -215,9 +241,16 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .form-container {
+                width: 90%;
             }
         }
     </style>
@@ -240,15 +273,15 @@
             </div>
         </div>
 
-        <h2>Registration</h2>
+        <h2>Register</h2>
         <form th:action="@{/register}" method="post" role="form" th:object="${user}">
             <label for="username">Username:</label>
-            <input th:field="*{username}" type="text" id="username" name="username"
-                placeholder="Enter your Username" required>
+            <input th:field="*{username}" type="text" id="username" name="username" placeholder="Enter your Username" required>
+            <div class="tooltip">Choose a unique username</div>
 
             <label for="password">Password:</label>
-            <input th:field="*{password}" type="password" id="password" name="password"
-                placeholder="Enter your Password" required>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your Password" required>
+            <div class="tooltip">Password must be at least 8 characters</div>
 
             <button type="submit">Register</button>
         </form>
@@ -268,4 +301,3 @@
 </body>
 
 </html>
-
