@@ -8,7 +8,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
         body {
-            background: linear-gradient(135deg, #6e45e2, #88d3ce);
+            background: linear-gradient(135deg, #3a6186, #89253e); /* Updated gradient background */
             font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
@@ -22,22 +22,22 @@
         }
 
         .navbar {
-            background-color: rgba(34, 34, 34, 0.8);
-            padding: 10px 20px;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px 30px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
             position: fixed;
             top: 0;
             width: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: space-between;
             z-index: 1000;
         }
 
         .navbar h1 {
             color: #ffffff;
-            font-size: 24px;
+            font-size: 26px;
             margin: 0;
-            margin-right: auto;
+            font-weight: 600;
         }
 
         .navbar .links {
@@ -46,10 +46,10 @@
         }
 
         .navbar a {
-            color: #88d3ce;
+            color: #ffa07a;
             text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .navbar a:hover {
@@ -57,39 +57,28 @@
         }
 
         .form-container {
-            background-color: rgba(0, 0, 0, 0.7);
-            width: 400px;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 350px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
             animation: fadeIn 1s ease-in-out;
-            margin-top: 80px;
-            margin-bottom: auto;
+            margin-top: 100px;
         }
 
         h2 {
-            color: #88d3ce;
+            color: #ffa07a;
             text-align: center;
             margin-bottom: 30px;
             font-size: 28px;
-            position: relative;
-        }
-
-        h2:after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background-color: #6e45e2;
-            margin: 10px auto 0;
-            border-radius: 2px;
+            font-weight: 600;
         }
 
         label {
             display: block;
             margin-bottom: 10px;
             color: #ffffff;
-            font-weight: 600;
+            font-weight: 500;
         }
 
         input {
@@ -97,8 +86,8 @@
             padding: 12px;
             margin-bottom: 20px;
             border: none;
-            border-radius: 5px;
-            background-color: #444;
+            border-radius: 6px;
+            background-color: #555;
             color: #ffffff;
             box-sizing: border-box;
             font-size: 14px;
@@ -106,13 +95,13 @@
         }
 
         input:focus {
-            background-color: #555;
+            background-color: #666;
             outline: none;
             transform: translateY(-2px);
         }
 
         button {
-            background-color: #6e45e2;
+            background-color: #ffa07a;
             color: #ffffff;
             padding: 12px 20px;
             border: none;
@@ -125,18 +114,18 @@
         }
 
         button:hover {
-            background-color: #88d3ce;
+            background-color: #ff6347;
             transform: translateY(-3px);
         }
 
         .form-footer {
             text-align: center;
             margin-top: 30px;
-            color: #ccc;
+            color: #cccccc;
         }
 
         .form-footer a {
-            color: #88d3ce;
+            color: #ffa07a;
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s;
@@ -144,12 +133,11 @@
 
         .form-footer a:hover {
             color: #ffffff;
-            text-decoration: underline;
         }
 
         .error-message,
         .logout-message {
-            background-color: rgba(255, 0, 0, 0.7);
+            background-color: rgba(255, 0, 0, 0.8);
             color: #ffffff;
             padding: 10px;
             border-radius: 3px;
@@ -159,17 +147,16 @@
         }
 
         .footer {
-            background-color: rgba(34, 34, 34, 0.8);
-            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 20px;
             text-align: center;
             color: #bbbbbb;
             margin-top: auto;
-            animation: fadeInUp 1s ease-in-out;
             width: 100%;
         }
 
         .footer a {
-            color: #88d3ce;
+            color: #ffa07a;
             text-decoration: none;
         }
 
@@ -198,17 +185,6 @@
             }
             75% {
                 transform: translateX(-5px);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
             }
         }
     </style>
@@ -241,12 +217,10 @@
         <form th:action="@{/login}" method="post" role="form" th:object="${user}">
 
             <label for="username">Username:</label>
-            <input th:field="*{username}" type="text" id="username" name="username"
-                placeholder="Enter your Username" required>
+            <input th:field="*{username}" type="text" id="username" name="username" placeholder="Enter your Username" required>
 
             <label for="password">Password:</label>
-            <input th:field="*{password}" type="password" id="password" name="password"
-                placeholder="Enter your Password" required>
+            <input th:field="*{password}" type="password" id="password" name="password" placeholder="Enter your Password" required>
 
             <button type="submit">Login</button>
         </form>
@@ -259,4 +233,3 @@
 </body>
 
 </html>
-
