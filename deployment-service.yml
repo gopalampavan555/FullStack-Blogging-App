@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: bloggingapp
-          image: kalyan555/blogging_app:latest # Updated image to private DockerHub image
+          image: kalyan555/blogging_app:null
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
